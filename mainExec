@@ -3,7 +3,7 @@ local Games = {
 	["ALS"] = { 12886143095, 18583778121, 12900046592 },
 }
 
-local function IsPlaceAllowed(PlaceId)
+function IsPlaceAllowed(PlaceId)
 	for _, id in ipairs(AllowedPlaceIds) do
 		if id == PlaceId then
 			return true
@@ -12,7 +12,7 @@ local function IsPlaceAllowed(PlaceId)
 	return false
 end
 
-local function LoadDirectScript(GameId)
+function LoadDirectScript(GameId)
 	local GameName = nil
 	for name, ids in pairs(Games) do
 		for _, id in ipairs(ids) do
@@ -124,14 +124,14 @@ UIStroke.Thickness = 2.5
 
 local TweenService = game:GetService("TweenService")
 
-local function UpdateBar(Progress)
+function UpdateBar(Progress)
 	local goal = { Size = UDim2.new(Progress, 0, 1, 0) }
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(barFrame, tweenInfo, goal)
 	tween:Play()
 end
 
-local function LoadGame(GameId)
+function LoadGame(GameId)
 	textLoader.Text = "Checking game"
 	wait(1)
 	UpdateBar(0.33)
